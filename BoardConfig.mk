@@ -1,0 +1,117 @@
+DEVICE_PATH := device/xiaomi/ruan
+
+# Building with minimal manifest
+ALLOW_MISSING_DEPENDENCIES := true
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_PLUGIN_VALIDATION := soong-libaosprecovery_defaults soong-libguitwrp_defaults
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_VARIANT := kryo
+
+# A/B
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS := \
+    boot \
+    dtbo \
+    odm \
+    product \
+    recovery \
+    system \
+    system_ext \
+    vbmeta \
+    vbmeta_system \
+    vendor \
+    vendor_boot \
+    vendor_dlkm
+
+# Bootloader
+PRODUCT_PLATFORM := parrot
+TARGET_BOOTLOADER_BOARD_NAME := parrot
+TARGET_NO_BOOTLOADER := true
+
+# Crypto
+BOARD_USES_METADATA_PARTITION := true
+
+# Debug
+TARGET_USES_LOGD := true
+AERA_INCLUDE_LOGCAT := true
+
+# File systems
+TARGET_USERIMAGES_USE_F2FS := true
+AERA_USE_DMCTL := true
+
+# Kernel: recovery runs boot's kernel and loads vendor_boot's modules.load.recovery.
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_BOOT_HEADER_VERSION := 4
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
+BOARD_RAMDISK_USE_LZ4 := true
+
+# Partitions
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
+BOARD_SUPER_PARTITION_SIZE := 9126805504
+BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext odm vendor vendor_dlkm
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
+TARGET_COPY_OUT_ODM := odm
+TARGET_COPY_OUT_VENDOR := vendor
+
+# Platform
+TARGET_BOARD_PLATFORM := parrot
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno710
+QCOM_BOARD_PLATFORMS += parrot
+
+# Recovery
+BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+AERA_INCLUDE_FASTBOOTD := true
+AERA_SKIP_ADDITIONAL_FSTAB := true
+AERA_UI_ADAPTIVE_RESOLUTION := true
+
+# Tools
+AERA_ENABLE_ALL_PARTITION_TOOLS := true
+AERA_INCLUDE_LIBRESETPROP := true
+AERA_INCLUDE_LPDUMP := true
+AERA_INCLUDE_LPTOOLS := true
+AERA_INCLUDE_REPACKTOOLS := true
+AERA_INCLUDE_RESETPROP := true
+AERA_USE_TOOLBOX := true
+
+# Display
+AERA_BRIGHTNESS_PATH := /sys/class/backlight/panel0-backlight/brightness
+AERA_MAX_BRIGHTNESS := 4095
+AERA_DEFAULT_BRIGHTNESS := 1200
+AERA_FRAMERATE := 60
+AERA_NO_SCREEN_BLANK := true
+AERA_THEME := portrait_hdpi
+
+# File systems in AERA
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_USES_MKE2FS := true
+AERA_INCLUDE_NTFS_3G := true
+
+# Version
+PLATFORM_VERSION := 99.87.36
+PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
+PLATFORM_SECURITY_PATCH := 2099-12-31
+VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
+AERA_DEVICE_VERSION := Redmi_Pad_Pro_5G
+
+# Verified Boot
+BOARD_AVB_ENABLE := true
+
+# Other
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+AERA_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone30/temp"
+AERA_EXCLUDE_APEX := true
+AERA_DEFAULT_LANGUAGE := en
+AERA_NO_HAPTICS := true
+AERA_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
