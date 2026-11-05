@@ -21,3 +21,8 @@ on property:dev.mnt.blk.firmware=*
 
 on property:vendor.sys.listeners.registered=true
     start vendor.keymint-qti
+
+# keystore2 starts first and stays stuck without KeyMint, keeping AERA on its logo.
+on property:init.svc.vendor.keymint-qti=running
+    wait /dev/.ruan-keymint-settle 2
+    restart keystore2
