@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: noble6 <ruanproject01@gmail.com>
+Date: Thu, 5 Nov 2026 17:00:00 +0530
+Subject: [PATCH] aeraui: Use a 16:10 canvas for ruan
+
+Pages are authored at fixed positions for 1440x3168, so a 1440 wide canvas
+either stretches on this 1600x2560 panel or cuts off the bottom. 1980x3168 has
+the panel's shape and the height the pages need.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ aeraui/include/aeraui/display_transform.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/aeraui/include/aeraui/display_transform.hpp b/aeraui/include/aeraui/display_transform.hpp
+--- a/aeraui/include/aeraui/display_transform.hpp
++++ b/aeraui/include/aeraui/display_transform.hpp
+@@ -14,7 +14,7 @@ namespace aeraui {
+ // into the same space. Using separate X/Y scales avoids letterboxing on phone
+ // panels whose aspect ratios differ slightly.
+ struct DisplayTransform {
+-  static constexpr int32_t kDesignWidth = 1440;
++  static constexpr int32_t kDesignWidth = 1980;
+   static constexpr int32_t kDesignHeight = 3168;
+ 
+   int32_t physical_width = 0;

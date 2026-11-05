@@ -8,6 +8,7 @@ level in BoardConfig.mk must match the installed ROM for decryption.
 repo init -u https://github.com/AERA-Recovery/android_manifest -b aera-16.0
 repo sync -c -j8
 git clone <this tree> device/xiaomi/ruan
+(cd bootable/recovery && git am ../../device/xiaomi/ruan/patches/bootable/recovery/*.patch)
 . build/envsetup.sh
 lunch twrp_ruan-bp2a-eng
 mka recoveryimage

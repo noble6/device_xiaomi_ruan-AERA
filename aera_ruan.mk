@@ -1,5 +1,7 @@
 AERA_MAINTAINER := 4-8-2-1-1-7
-AERA_STATUS_H := 80
+# In 1080-wide theme units: * 4 / 3 = the 3168 tall canvas.
+AERA_SCREEN_H := 2376
+AERA_STATUS_H := 100
 AERA_OPTIONS_LIST_NUM := 8
 AERA_USE_GREEN_LED := 0
 
