@@ -124,4 +124,6 @@ AERA_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone30/temp"
 AERA_EXCLUDE_APEX := true
 AERA_DEFAULT_LANGUAGE := en
 AERA_NO_HAPTICS := true
+# Once storage unlocks the UI switches USB to mtp,adb, which the default can't do.
+AERA_EXCLUDE_DEFAULT_USB_INIT := true
 AERA_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true

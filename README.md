@@ -1,7 +1,8 @@
 # AERA Recovery device tree for the Redmi Pad Pro 5G / POCO Pad 5G (ruan)
 
-Works: display, touch, adb, battery. Decryption is being tested, so don't rely on
-its backups yet.
+Works: display, touch, battery, and decrypting a device with no lock screen credential.
+Not checked yet: backup and restore, and a PIN or password. The OS version and patch
+level in BoardConfig.mk must match the installed ROM for decryption.
 
 ```
 repo init -u https://github.com/AERA-Recovery/android_manifest -b aera-16.0
