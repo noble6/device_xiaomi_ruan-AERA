@@ -79,8 +79,9 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 AERA_INCLUDE_FASTBOOTD := true
 AERA_SKIP_ADDITIONAL_FSTAB := true
-# AERA's pages are authored for 1440x3168. Render 1:1: scaling this panel's 1600 wide
-# canvas blurs the text, and the shorter adaptive canvas pushes buttons under the nav bar.
+# AERA's pages are authored for 1440x3168. patches/bootable/recovery makes the canvas
+# 1980x3168, which scales evenly onto this panel and fits them.
+AERA_UI_ADAPTIVE_RESOLUTION := true
 
 # Tools
 AERA_ENABLE_ALL_PARTITION_TOOLS := true
