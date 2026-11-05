@@ -1,0 +1,23 @@
+# keystore2 aborts without KeyMint, and AERA's UI waits for keystore2.
+service vendor.qseecomd /vendor/bin/qseecomd
+    socket notify-topology stream 660 system drmrpc
+    class core
+    user root
+    group root drmrpc
+    setenv LD_LIBRARY_PATH /vendor/lib64:/system/lib64
+    seclabel u:r:recovery:s0
+    disabled
+
+service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-service-qti
+    class early_hal
+    user root
+    group root drmrpc
+    setenv LD_LIBRARY_PATH /vendor/lib64:/system/lib64
+    seclabel u:r:recovery:s0
+    disabled
+
+on property:dev.mnt.blk.firmware=*
+    start vendor.qseecomd
+
+on property:vendor.sys.listeners.registered=true
+    start vendor.keymint-qti
