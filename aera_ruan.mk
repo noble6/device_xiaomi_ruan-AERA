@@ -17,5 +17,4 @@ AERA_USE_LZ4_COMPRESSION := 1
 AERA_USE_AIDL_BOOT_CONTROL := 1
 AERA_ROOT_MODULE_KERNELS := 5.10
 
-# First bring-up: display, touch and adb. /data stays encrypted until decryption works.
-AERA_SKIP_FBE_DECRYPTION := 1
+AERA_DEFAULT_TIMEZONE := IST-5:30
