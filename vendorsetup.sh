@@ -18,6 +18,8 @@ fi
 if [ "$1" = "$FDEVICE" -o "$AERA_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export LC_ALL="C"
 	export ALLOW_MISSING_DEPENDENCIES=true
+	# Stable builds turn on advanced security, which stops adbd during startup.
+	export AERA_BUILD_TYPE=Beta
 	export AERA_SETTINGS_ROOT_DIRECTORY=/data/recovery
 	export AERA_MISCELLANEOUS_ROOT_DIRECTORY=/sdcard
 	export TARGET_DEVICE_ALT="ruan"
