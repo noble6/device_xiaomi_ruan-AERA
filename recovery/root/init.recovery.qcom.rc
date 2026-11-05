@@ -30,6 +30,9 @@ import /vendor/etc/init/ruan-crypto.rc
 on early-init
     wait /sys/fs/selinux/enforce
     write /sys/fs/selinux/enforce 0
+    # Switching USB to mtp,adb at startup loses USB on this tablet, and AERA doesn't
+    # build without MTP. twrp.cpp skips starting it when this says the last try crashed.
+    setprop mtp.crash_check 1
 
 on init
     write /sys/class/backlight/panel0-backlight/brightness 200
