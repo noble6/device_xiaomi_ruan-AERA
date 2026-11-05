@@ -73,3 +73,13 @@ on property:sys.usb.state=adb
     write /sys/devices/platform/soc/a600000.ssusb/mode none
     wait /dev/.dizi-usb-settle 2
     write /sys/devices/platform/soc/a600000.ssusb/mode peripheral
+
+on property:sys.usb.state=mtp,adb
+    write /sys/devices/platform/soc/a600000.ssusb/mode none
+    wait /dev/.dizi-usb-settle 2
+    write /sys/devices/platform/soc/a600000.ssusb/mode peripheral
+
+on property:sys.usb.state=mtp
+    write /sys/devices/platform/soc/a600000.ssusb/mode none
+    wait /dev/.dizi-usb-settle 2
+    write /sys/devices/platform/soc/a600000.ssusb/mode peripheral
