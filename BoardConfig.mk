@@ -105,10 +105,13 @@ TARGET_USES_MKE2FS := true
 AERA_INCLUDE_NTFS_3G := true
 
 # Version
-PLATFORM_VERSION := 99.87.36
+# KeyMint binds keys to these and takes them once per boot. Match the installed ROM:
+# with AERA's usual 99.87.36 / 2099-12-31 it wants a key upgrade, which it then refuses.
+PLATFORM_VERSION := 17
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
-PLATFORM_SECURITY_PATCH := 2099-12-31
+PLATFORM_SECURITY_PATCH := 2026-11-01
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
+BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 AERA_DEVICE_VERSION := Redmi_Pad_Pro_5G
 
 # Verified Boot
