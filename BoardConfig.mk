@@ -33,8 +33,14 @@ PRODUCT_PLATFORM := parrot
 TARGET_BOOTLOADER_BOARD_NAME := parrot
 TARGET_NO_BOOTLOADER := true
 
-# Crypto
+# Crypto: AERA only packs libincfs, which recovery needs to start, with these on.
+# aera_ruan.mk still skips decrypting until the keymint blobs are in.
 BOARD_USES_METADATA_PARTITION := true
+BOARD_USES_QCOM_FBE_DECRYPTION := true
+AERA_INCLUDE_CRYPTO := true
+AERA_INCLUDE_CRYPTO_FBE := true
+AERA_INCLUDE_FBE_METADATA_DECRYPT := true
+AERA_USE_FSCRYPT_POLICY := 2
 
 # Debug
 TARGET_USES_LOGD := true
